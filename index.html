@@ -1,46 +1,245 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Meta -->
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <!-- Title & Icon -->
     <title>Bank of Shirshadip</title>
-    <link rel="icon" href="bank.png" type="image/png">
-
-    <!-- Styles -->
     <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="bank.png" type="image/png">
+    
 </head>
 <body>
-
     <div id="app">
-
-        <!-- ===== HEADER COMPONENT ===== -->
         <header class="app-header">
             <div class="header-left">
                 <h1 class="app-title">Bank of Shirshadip</h1>
             </div>
-
             <div class="header-right">
                 <button class="btn btn-primary" id="login-btn">Login</button>
                 <button class="btn btn-outline" id="signup-btn">Sign Up</button>
+                <button class="btn btn-outline hidden" id="logout-btn">Logout</button>
             </div>
         </header>
 
-        <!-- ===== MAIN COMPONENT ===== -->
         <main class="app-main">
-            <!-- login / signup / dashboard will come here -->
+            <!-- Login Form -->
+            <div id="login-view" class="auth-container hidden">
+                <h2 class="auth-title">Welcome Back</h2>
+                <form id="login-form">
+                    <div class="form-group">
+                        <label for="login-email">Email</label>
+                        <input type="email" id="login-email" placeholder="Enter your email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="login-password">Password</label>
+                        <input type="password" id="login-password" placeholder="Enter your password" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-full">Login</button>
+                </form>
+            </div>
+
+            <!-- Signup Form -->
+            <div id="signup-view" class="auth-container hidden">
+                <h2 class="auth-title">Create Account</h2>
+                <form id="signup-form">
+                    <div class="form-group">
+                        <label for="signup-name">Full Name</label>
+                        <input type="text" id="signup-name" placeholder="Enter your full name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="signup-email">Email</label>
+                        <input type="email" id="signup-email" placeholder="Enter your email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="signup-password">Password</label>
+                        <input type="password" id="signup-password" placeholder="Create a password" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="signup-confirm">Confirm Password</label>
+                        <input type="password" id="signup-confirm" placeholder="Confirm your password" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-full">Sign Up</button>
+                </form>
+            </div>
+
+            <!-- Dashboard -->
+            <div id="dashboard-view" class="hidden">
+                <div class="user-welcome">
+                    <div class="welcome-text">
+                        <h2>Welcome back, <span id="user-name">Shirshadip</span>!</h2>
+                        <p>Here's your account overview</p>
+                    </div>
+                    <div class="btn btn-primary" id="new-transaction-btn">New Transaction</div>
+                </div>
+
+                <div class="dashboard">
+                    <div class="card">
+                        <div class="card-title">Account Balance</div>
+                        <div class="card-value">₹54,328.50</div>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="card-title">Monthly Income</div>
+                        <div class="card-value">₹12,450</div>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="card-title">Monthly Expenses</div>
+                        <div class="card-value">₹8,234</div>
+                    </div>
+
+                    <div class="quick-actions">
+                        <h3>Quick Actions</h3>
+                        <div class="actions-grid">
+                            <button class="action-btn">
+                                <span class="action-icon">💸</span>
+                                Transfer
+                            </button>
+                            <button class="action-btn">
+                                <span class="action-icon">💳</span>
+                                Pay Bills
+                            </button>
+                            <button class="action-btn">
+                                <span class="action-icon">📱</span>
+                                Recharge
+                            </button>
+                            <button class="action-btn">
+                                <span class="action-icon">📊</span>
+                                Statements
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="transaction-card">
+                        <div class="transaction-header">
+                            <h3>Recent Transactions</h3>
+                        </div>
+                        
+                        <div class="transaction-item">
+                            <div class="transaction-info">
+                                <div class="transaction-icon credit">↓</div>
+                                <div class="transaction-details">
+                                    <h4>Salary Deposit</h4>
+                                    <p>Dec 15, 2025</p>
+                                </div>
+                            </div>
+                            <div class="transaction-amount credit">+₹45,000</div>
+                        </div>
+
+                        <div class="transaction-item">
+                            <div class="transaction-info">
+                                <div class="transaction-icon debit">↑</div>
+                                <div class="transaction-details">
+                                    <h4>Electricity Bill</h4>
+                                    <p>Dec 14, 2025</p>
+                                </div>
+                            </div>
+                            <div class="transaction-amount debit">-₹1,850</div>
+                        </div>
+
+                        <div class="transaction-item">
+                            <div class="transaction-info">
+                                <div class="transaction-icon debit">↑</div>
+                                <div class="transaction-details">
+                                    <h4>Online Shopping</h4>
+                                    <p>Dec 13, 2025</p>
+                                </div>
+                            </div>
+                            <div class="transaction-amount debit">-₹3,250</div>
+                        </div>
+
+                        <div class="transaction-item">
+                            <div class="transaction-info">
+                                <div class="transaction-icon credit">↓</div>
+                                <div class="transaction-details">
+                                    <h4>Refund - Amazon</h4>
+                                    <p>Dec 12, 2025</p>
+                                </div>
+                            </div>
+                            <div class="transaction-amount credit">+₹899</div>
+                        </div>
+
+                        <div class="transaction-item">
+                            <div class="transaction-info">
+                                <div class="transaction-icon debit">↑</div>
+                                <div class="transaction-details">
+                                    <h4>Restaurant</h4>
+                                    <p>Dec 11, 2025</p>
+                                </div>
+                            </div>
+                            <div class="transaction-amount debit">-₹1,450</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </main>
 
-        <!-- ===== FOOTER COMPONENT ===== -->
         <footer class="app-footer">
             <p>&copy; 2025 Bank of Shirshadip. All rights reserved.</p>
         </footer>
-
     </div>
 
-    <script src="script.js"></script>
+    <script>
+        // View management
+        const views = {
+            login: document.getElementById('login-view'),
+            signup: document.getElementById('signup-view'),
+            dashboard: document.getElementById('dashboard-view')
+        };
+
+        const buttons = {
+            login: document.getElementById('login-btn'),
+            signup: document.getElementById('signup-btn'),
+            logout: document.getElementById('logout-btn')
+        };
+
+        function showView(viewName) {
+            Object.values(views).forEach(view => view.classList.add('hidden'));
+            views[viewName].classList.remove('hidden');
+        }
+
+        function showDashboard() {
+            showView('dashboard');
+            buttons.login.classList.add('hidden');
+            buttons.signup.classList.add('hidden');
+            buttons.logout.classList.remove('hidden');
+        }
+
+        function showAuth() {
+            buttons.login.classList.remove('hidden');
+            buttons.signup.classList.remove('hidden');
+            buttons.logout.classList.add('hidden');
+        }
+
+        // Button event listeners
+        buttons.login.addEventListener('click', () => showView('login'));
+        buttons.signup.addEventListener('click', () => showView('signup'));
+        buttons.logout.addEventListener('click', () => {
+            showAuth();
+            showView('login');
+        });
+
+        // Form submissions
+        document.getElementById('login-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            showDashboard();
+        });
+
+        document.getElementById('signup-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const password = document.getElementById('signup-password').value;
+            const confirm = document.getElementById('signup-confirm').value;
+            
+            if (password !== confirm) {
+                alert('Passwords do not match!');
+                return;
+            }
+            
+            showDashboard();
+        });
+
+        // Initialize - show login by default
+        showView('login');
+    </script>
 </body>
 </html>
